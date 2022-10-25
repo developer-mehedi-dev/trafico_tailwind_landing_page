@@ -1,11 +1,12 @@
-import Image from "next/image";
-
 import { motion } from "framer-motion";
 
 import { fadeInUp, fadeInDown, staggerTextContainer } from "../variants";
+import { aboutData } from "../data";
 
-const About = ({ aboutData }) => {
-  const { title, subtitle, text, boyImg } = aboutData;
+import boyImg from "../assets/img/about/boy.svg";
+
+const About = () => {
+  const { title, subtitle, text } = aboutData;
   return (
     <section className="mb-[60px] lg:mb-[160px]">
       <div className="container mx-auto">
@@ -31,7 +32,7 @@ const About = ({ aboutData }) => {
             variants={fadeInUp}
             className="flex-1 flex justify-center items-center"
           >
-            <Image src={boyImg} alt="boy" width={575} height={400} />
+            <img src={boyImg} alt="boy" className="w-[575px] h-[400px]" />
           </motion.div>
         </motion.div>
       </div>

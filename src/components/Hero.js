@@ -1,9 +1,13 @@
-import Image from "next/image";
-
 import Header from "./Header";
 
 import { motion } from "framer-motion";
 import { CgArrowLongRight } from "react-icons/cg";
+
+import { heroData } from "../data";
+
+import boyImg from "../assets/img/hero/boy.svg";
+import girlImg from "../assets/img/hero/girl.svg";
+import truckImg from "../assets/img/hero/truck.svg";
 
 import {
   staggerContainer,
@@ -13,8 +17,9 @@ import {
   fadeInDown,
 } from "../variants";
 
-const Hero = ({ heroData, headerData, navData }) => {
-  const { title, boyImg, girlImg, truckImg, btnText } = heroData;
+const Hero = () => {
+  const { title, btnText } = heroData;
+
   return (
     <section className="bg-hero bg-no-repeat bg-left-top min-h-[800px] lg:min-h-[950px] lg:mb-80">
       <motion.div
@@ -24,7 +29,7 @@ const Hero = ({ heroData, headerData, navData }) => {
         className="container mx-auto relative min-h-[800px] lg:min-h-[950px] "
       >
         <motion.div variants={fadeInDown}>
-          <Header headerData={headerData} navData={navData} />
+          <Header />
         </motion.div>
 
         <motion.h1
@@ -47,21 +52,21 @@ const Hero = ({ heroData, headerData, navData }) => {
           variants={girlAnim}
           className="hidden lg:flex absolute bottom-0"
         >
-          <Image src={girlImg} alt="girl" width={286} height={495} />
+          <img src={girlImg} alt="girl" className="w-[286px] h-[495px]" />
         </motion.div>
 
         <motion.div
           variants={heroTruckAnim}
           className="hidden lg:flex absolute  -bottom-[25%] -left-[30%]"
         >
-          <Image src={truckImg} alt="truck" width={811} height={395} />
+          <img src={truckImg} alt="truck" className="w-[811px] h-[395px]" />
         </motion.div>
 
         <motion.div
           variants={boyAnim}
           className="hidden lg:flex absolute right-[380px] bottom-0 z-10"
         >
-          <Image src={boyImg} alt="boy" width={286} height={495} />
+          <img src={boyImg} alt="boy" className="w-[286px] h-[495px]" />
         </motion.div>
       </motion.div>
     </section>

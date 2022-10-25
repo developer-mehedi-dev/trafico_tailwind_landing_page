@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 
 import { fadeInUp, staggerTextContainer } from "../variants";
 
-const Testimonials = ({ testimonialData }) => {
+import { testimonialData } from "../data";
+
+const Testimonials = () => {
   const { pretitle, title, clients } = testimonialData;
   return (
     <section className="relative min-h-[600px]">

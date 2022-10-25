@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import Accordion from "./Accordion";
 
 import { motion } from "framer-motion";
@@ -11,8 +9,12 @@ import {
   staggerTextContainer,
 } from "../variants";
 
-const Faq = ({ faqData }) => {
-  const { pretitle, title, boyImg, accordions } = faqData;
+import boyImg from "../assets/img/faq/boy.svg";
+
+import { faqData } from "../data";
+
+const Faq = () => {
+  const { pretitle, title, accordions } = faqData;
   return (
     <section className="min-h-[1150px] lg:bg-faq bg-no-repeat bg-right-top lg:pt-40 lg:pb-24 mb-[60px] lg:mb-[160px]">
       <div className="container mx-auto">
@@ -31,7 +33,7 @@ const Faq = ({ faqData }) => {
             variants={fadeInLeft}
             className="lg:absolute lg:-right-16 lg:-top-16"
           >
-            <Image src={boyImg} alt="boy" width={700} height={490} />
+            <img src={boyImg} alt="boy" className="w-[700px] h-[490px]" />
           </motion.div>
         </motion.div>
         {/* Accordian */}

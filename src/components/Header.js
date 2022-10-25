@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
 
 import Nav from "./Nav";
 import NavMobile from "./NavMobile";
@@ -8,12 +6,17 @@ import NavMobile from "./NavMobile";
 import { HiMenu } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 
-const Header = ({ headerData, navData }) => {
+import { headerData } from "../data";
+
+import logoImgV1 from "../assets/img/header/logoV1.svg";
+import logoImgV2 from "../assets/img/header/logoV2.svg";
+
+const Header = () => {
   const [toggle, setToggle] = useState(false);
   const [header, setHeader] = useState(false);
   const [navMobile, setNavMobile] = useState(false);
 
-  const { logoImgV1, logoImgV2, btnText } = headerData;
+  const { btnText } = headerData;
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -27,17 +30,17 @@ const Header = ({ headerData, navData }) => {
         header ? "bg-white p-3 rounded-md drop-shadow-primary" : "py-[40px]"
       }  fixed w-full left-0 right-0 max-w-[90vw] m-auto lg:max-w-[1120px] z-20 flex justify-between items-center trasnsition-all duration-500`}
     >
-      <Link href={"/"}>
-        <Image
+      <a href={"/"}>
+        <img
           src={header ? logoImgV2 : logoImgV1}
           width={header ? 100 : 212}
           height={50}
           alt="logo"
         />
-      </Link>
+      </a>
       {/* Desktop Navbar */}
       <div className="hidden lg:flex gap-x-[96px]">
-        <Nav navData={navData} header={header} />
+        <Nav header={header} />
         <button className="btn">{btnText}</button>
       </div>
 
@@ -55,7 +58,7 @@ const Header = ({ headerData, navData }) => {
           navMobile ? "max-h-[154px]" : "max-h-0"
         } lg:hidden absolute top-full left-0 mt-2 w-full overflow-hidden rounded-md shadow-2xl transition-all`}
       >
-        <NavMobile navData={navData} />
+        <NavMobile />
       </div>
     </header>
   );

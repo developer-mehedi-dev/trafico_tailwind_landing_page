@@ -1,15 +1,17 @@
-import Image from "next/image";
-
-import Link from "next/link";
-
 import { CgArrowLongRight } from "react-icons/cg";
 
 import { motion } from "framer-motion";
 
 import { staggerFooterContainer, footerTruckAnim, fadeInUp } from "../variants";
 
-const Footer = ({ footerData }) => {
-  const { truckImg, hillImg, text, logo, links, form } = footerData;
+import { footerData } from "../data";
+
+import truckImg from "../assets/img/footer/truck.svg";
+import hilling from "../assets/img/footer/hill.svg";
+import logo from "../assets/img/footer/logo.svg";
+
+const Footer = () => {
+  const { text, links, form } = footerData;
   return (
     <footer className="bg-darkblue lg:bg-transparent lg:bg-footer lg:bg-no-repeat lg:bg-left-bottom lg:min-h-[730px] pt-12 lg:pt-0 relative">
       <motion.div
@@ -23,10 +25,10 @@ const Footer = ({ footerData }) => {
           variants={footerTruckAnim}
           className="hidden lg:flex absolute -top-24 -left-[6.8%]"
         >
-          <Image src={truckImg} width={430} height={210} />
+          <img src={truckImg} className="w-[430px] h-[210px]" />
         </motion.div>
         <div className="hidden lg:flex absolute z-10 top-[22] left-0">
-          <Image src={hillImg} width={137} height={92} />
+          <img src={hilling} className="w-[137px] h-[92px]" />
         </div>
         <motion.div
           variants={fadeInUp}
@@ -74,11 +76,9 @@ const Footer = ({ footerData }) => {
           className="flex flex-col py-[120px] lg:flex-row justify-between lg:pr-24"
         >
           <div className="mb-6 mx-auto lg:mb-0 lg:mx-0">
-            <Link href={"/"}>
-              <a>
-                <Image src={logo} alt="logo" width="270" height="41" />
-              </a>
-            </Link>
+            <a href={"/"}>
+              <img src={logo} alt="logo" width="270" height="41" />
+            </a>
           </div>
           <ul className="flex flex-col items-center lg:flex-row gap-y-4 lg:gap-y-0 gap-x-[100px] text-center">
             {links.map((link, index) => {
@@ -87,7 +87,7 @@ const Footer = ({ footerData }) => {
                   className="text-white font-light hover:text-accent transition"
                   key={index}
                 >
-                  <Link href={link.href}>{link.name}</Link>
+                  <a href={link.href}>{link.name}</a>
                 </li>
               );
             })}
